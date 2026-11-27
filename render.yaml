@@ -1,0 +1,58 @@
+# Render Blueprint for the Awning API (the backend).
+# The frontend is deployed separately on Vercel or Netlify; see SETUP_GUIDE.md steps B8 and B9.
+# Values marked sync: false are entered by hand in Render's Environment screen.
+services:
+  - type: web
+    name: awning-api
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: "22"
+      - key: AUTO_SEED
+        value: "false"
+      - key: MONGO_MEMORY_FALLBACK
+        value: "false"
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CLIENT_URL
+        sync: false
+      - key: PUBLIC_URL
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: CACHE_DRIVER
+        value: redis
+      - key: SEARCH_DRIVER
+        sync: false
+      - key: ELASTICSEARCH_URL
+        sync: false
+      - key: ELASTICSEARCH_API_KEY
+        sync: false
+      - key: STORAGE_DRIVER
+        value: s3
+      - key: AWS_REGION
+        sync: false
+      - key: AWS_ACCESS_KEY_ID
+        sync: false
+      - key: AWS_SECRET_ACCESS_KEY
+        sync: false
+      - key: S3_BUCKET
+        sync: false
+      - key: PAYMENT_PROVIDER
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: CURRENCY
+        sync: false
+      - key: PLATFORM_COMMISSION_PERCENT
+        value: "10"

@@ -1,0 +1,30 @@
+{
+  "name": "awning-marketplace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Awning - a multi-vendor marketplace: many shops sell, customers buy, the platform splits payments and earns commission.",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "engines": {
+    "node": ">=18.18"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "predev": "node scripts/setup.mjs",
+    "dev": "concurrently -k -n api,web -c blue,red \"npm run dev -w server\" \"npm run dev -w client\"",
+    "seed": "npm run seed -w server",
+    "seed:reset": "npm run seed -w server -- --reset",
+    "seed:photos": "npm run seed -w server -- --reset --photos",
+    "reindex": "npm run reindex -w server",
+    "build": "npm run build -w client",
+    "start": "npm run start -w server",
+    "test": "npm run test -w server",
+    "doctor": "npm run doctor -w server",
+    "create-admin": "npm run create-admin -w server --"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.7"
+  }
+}

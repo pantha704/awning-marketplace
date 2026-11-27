@@ -1,0 +1,31 @@
+# Local infrastructure for development: MongoDB, Redis and Elasticsearch.
+#   docker compose up -d     start all three in the background
+#   docker compose down      stop them (data is kept in named volumes)
+# Then set ELASTICSEARCH_URL=http://localhost:9200 in server/.env (SETUP_GUIDE.md step A4).
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    ports: ["27017:27017"]
+    volumes: [mongo-data:/data/db]
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    ports: ["6379:6379"]
+    volumes: [redis-data:/data]
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.15.3
+    restart: unless-stopped
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports: ["9200:9200"]
+    volumes: [es-data:/usr/share/elasticsearch/data]
+
+volumes:
+  mongo-data:
+  redis-data:
+  es-data:
