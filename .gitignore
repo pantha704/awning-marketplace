@@ -2,7 +2,12 @@ node_modules/
 .env
 !.env.example
 client/dist/
-server/storage/
+# Local uploads stay out of git, but the generated demo catalogue art is
+# committed so a redeploy keeps its pictures (see scripts/export-seed-art.mjs).
+server/storage/*
+!server/storage/media/
+server/storage/media/*
+!server/storage/media/seed/
 server/storage-test/
 server/.data/
 *.log
