@@ -5,6 +5,9 @@ splits the payment between the shops and keeps a commission.
 
 Built with React, Node.js, MongoDB, Elasticsearch, Redis, AWS S3 and Stripe Connect or Razorpay Route.
 
+**Live demo: https://awning-marketplace.onrender.com** — see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for what is
+configured there. The demo runs on free tiers with the test payment gateway, so no real money moves.
+
 ![Home page](docs/screenshots/home.jpg)
 
 ## Quick start
